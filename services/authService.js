@@ -45,7 +45,7 @@ exports.signup = asyncHandler(async (req, res, next) => {
   const user = await User.create(req.body);
 
   // 2- Generate token
-  const access_token = createToken(user._id, "5d");
+  const access_token = createToken(user._id, "1m");
   const refresh_token = createToken(user._id, "90d");
 
   res.status(201).json({ data: user, access_token, refresh_token });
@@ -64,7 +64,7 @@ exports.login = asyncHandler(async (req, res, next) => {
   }
 
   // 3)  Generate token
-  const access_token = createToken(user._id, "5d");
+  const access_token = createToken(user._id, "1m");
   const refresh_token = createToken(user._id, "90d");
 
   // Delete password from response
@@ -93,7 +93,7 @@ exports.refreshToken = asyncHandler(async (req, res, next) => {
   }
 
   // Generate new tokens
-  const access_token = createToken(user._id, "8m");
+  const access_token = createToken(user._id, "1m");
   // const new_refresh_token = createToken(user._id, "90d");
 
   res.status(200).json({ access_token });
